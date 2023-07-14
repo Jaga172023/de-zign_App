@@ -20,7 +20,7 @@ router.route("/").post(async (req, res) => {
 	try {
 		const { prompt } = req.body;
 
-		const response = await openai.completions.create({
+		const response = await openai.createImage({
 			prompt,
 			n: 1,
 			size: "1024x1024",
@@ -31,7 +31,7 @@ router.route("/").post(async (req, res) => {
 
 		res.status(200).json({ photo: image });
 	} catch (error) {
-		console.error(error);
+		console.error("Error making the API call:", error.response.data.error);
 		res.status(500).json({ message: "Something went wrong" });
 	}
 });
