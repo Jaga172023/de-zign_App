@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useSnapshot } from "valtio";
 
-import config from "../config/config";
 import state from "../store";
-import { download, logoShirt } from "../assets";
-import { downloadCanvasToImage, reader } from "../config/helpers";
+import { reader } from "../config/helpers";
 import { EditorTabs, FilterTabs, DecalTypes } from "../config/constants";
 import { fadeAnimation, slideAnimation } from "../config/motion";
 import {
@@ -74,7 +72,11 @@ const Customizer = () => {
 
 			const data = await response.json();
 
-			handleDecals(type, `data:image/png;base64,${data.photo}`);
+			if (data.photo) {
+				handleDecals(type, `data:image/png;base64,${data.photo}`);
+			} else {
+				alert(data.message);
+			}
 		} catch (error) {
 			alert(error);
 		} finally {
