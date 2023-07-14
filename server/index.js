@@ -16,6 +16,6 @@ app.get("/", (req, res) => {
 	res.status(200).json({ message: "Hello, world!" });
 });
 
-app.listen(8080, () => {
-	console.log("Server has started @ port 8080");
+app.listen(3000, () => {
+	console.log("Server has started @ port 3000");
 });
