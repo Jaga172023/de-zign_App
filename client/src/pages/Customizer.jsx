@@ -60,7 +60,7 @@ const Customizer = () => {
 			setGeneratingImg(true);
 
 			const response = await fetch(
-				"http://https://project-de-zign.onrender.com/api/v1/dalle",
+				"https://project-de-zign.onrender.com/api/v1/dalle",
 				{
 					method: "POST",
 					headers: {
